@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Yo'nalishlar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .field-button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .field-button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Yo'nalish Tanlang</h1>
+        <div class="grid">
+            <button onclick="navigateTo('islomshunoslik.html', 'Islomshunoslik')" class="field-button">Islomshunoslik</button>
+            <button onclick="navigateTo('dinshunoslik.html', 'Dinshunoslik')" class="field-button">Dinshunoslik</button>
+            <button onclick="navigateTo('tarix.html', 'Tarix')" class="field-button">Tarix</button>
+            <button onclick="navigateTo('lingvistika.html', 'Lingvistika')" class="field-button">Lingvistika</button>
+            <button onclick="navigateTo('matn.html', 'Matnshunoslik')" class="field-button">Matnshunoslik</button>
+            <button onclick="navigateTo('xalqaro.html', 'Xalqaro munosabatlar')" class="field-button">Xalqaro munosabatlar</button>
+            <button onclick="navigateTo('psixologiya.html', 'Psixologiya')" class="field-button">Psixologiya</button>
+            <button onclick="navigateTo('iqtisod.html', 'Iqtisodiyot')" class="field-button">Iqtisodiyot</button>
+            <button onclick="navigateTo('tif.html', 'Tashqi iqtisodiyot')" class="field-button">Tashqi iqtisodiyot</button>
+            <button onclick="navigateTo('huquq.html', 'Islom huquqi')" class="field-button">Islom huquqi</button>
+            <button onclick="navigateTo('axborot.html', 'Axborot xavfsizligi')" class="field-button">Axborot xavfsizligi</button>
+            <button onclick="navigateTo('turizm.html', 'Turizm')" class="field-button">Turizm</button>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(url, fieldName) {
+            // Store the field name in localStorage
+            localStorage.setItem('selectedField', fieldName);
+
+            // Redirect to the specified URL
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

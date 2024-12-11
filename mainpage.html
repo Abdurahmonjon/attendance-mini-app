@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Magistrlar Davomati</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sana Tanlang</h1>
+        <form id="dateForm">
+            <input
+                type="date"
+                id="dateSelect"
+                required
+                min="2024-12-01"
+                max="2025-12-31"
+            >
+            <button type="submit">Keyingi</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('dateForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const selectedDate = document.getElementById('dateSelect').value;
+
+            try {
+                // Send the selected date to the server
+                //const response = await fetch('http://localhost:3000/write-date', {
+                //    method: 'POST',
+                //    headers: { 'Content-Type': 'application/json' },
+               //     body: JSON.stringify({ date: selectedDate }),
+               // });
+
+
+                //if (response.ok) {
+                //    alert('Date successfully written to Google Sheets!');
+               // } else {
+               //     alert('Failed to write date. Please try again.');
+               // }
+
+                // Save the date to sessionStorage
+                sessionStorage.setItem('selectedDate', selectedDate);
+
+                // Navigate to fields.html
+                window.location.href = 'fields.html';
+            } catch (err) {
+                console.error('Error:', err);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
