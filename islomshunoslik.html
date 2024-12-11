@@ -221,12 +221,12 @@
     });
 
     // Example: Send data to the server
-    fetch('http://127.0.0.1:3000/submit-attendance', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataToSend),
+    fetch('https://1dc0-84-54-90-229.ngrok-free.app/submit-attendance', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dataToSend),
     })
     .then(response => response.json())
     .then(data => {
