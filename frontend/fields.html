@@ -9,19 +9,24 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f4f4f4;
+            background: linear-gradient(to bottom, #1e3c72, #000);
+            color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden; /* Prevent scrollbars due to snowfall */
         }
         .container {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            color: #333;
         }
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+            margin-bottom: 20px;
         }
         .field-button {
             background-color: #007bff;
@@ -34,9 +39,49 @@
         .field-button:hover {
             background-color: #0056b3;
         }
+        .back-button {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
         a {
             text-decoration: none;
             color: inherit;
+        }
+
+        /* Snowflake style */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            background-color: white;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none; /* Allow clicks to go through the snowflakes */
+            z-index: 1;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Snowflake adjustments for mobile responsiveness */
+        @media (max-width: 600px) {
+            .snowflake {
+                width: 8px;
+                height: 8px;
+            }
         }
     </style>
 </head>
@@ -57,6 +102,7 @@
             <button onclick="navigateTo('axborot.html', 'Axborot xavfsizligi')" class="field-button">Axborot xavfsizligi</button>
             <button onclick="navigateTo('turizm.html', 'Turizm')" class="field-button">Turizm</button>
         </div>
+        <button onclick="window.location.href='mainpage.html'" class="back-button">Kunni xato kiritibman, ortga</button>
     </div>
 
     <script>
@@ -67,6 +113,27 @@
             // Redirect to the specified URL
             window.location.href = url;
         }
+
+        // Create snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            document.body.appendChild(snowflake);
+
+            // Randomize starting position and animation duration
+            snowflake.style.left = Math.random() * window.innerWidth + 'px'; // Random horizontal position
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Between 2s and 5s fall duration
+            snowflake.style.animationTimingFunction = 'linear'; // Smooth continuous fall
+            snowflake.style.width = snowflake.style.height = (Math.random() * 5 + 5) + 'px'; // Random size between 5px and 10px
+
+            // Remove snowflake after it falls
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+
+        // Generate snowflakes every 100 milliseconds
+        setInterval(createSnowflake, 100);
     </script>
 </body>
 </html>
